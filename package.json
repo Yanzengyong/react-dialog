@@ -1,7 +1,7 @@
 {
-  "name": "react-tiny-autosuggest",
-  "version": "1.0.1",
-  "description": "react tiny auto suggest component",
+  "name": "react-dialog-yzy",
+  "version": "1.0.2",
+  "description": "react dialog component",
   "main": "dist/bundle.js",
   "files": [
     "dist"
@@ -10,7 +10,7 @@
     "build": "webpack --env.NODE_ENV=production",
     "dev": "webpack-dev-server"
   },
-  "keywords": [],
+  "keywords": ["react-dialog", "dialog", "alert", "react", "react-alert"],
   "author": "",
   "license": "ISC",
   "dependencies": {

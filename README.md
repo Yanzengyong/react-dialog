@@ -1,42 +1,78 @@
 ## Install
 
 ```
-npm i react-tiny-autosuggest
+npm i react-dialog-yzy
+```
+or
+
+```
+yarn react-dialog-yzy
 ```
 
 ## Usage
 
 ```
-import AutoSuggest from 'react-tiny-autosuggest';
+  import Dialog from 'react-dialog';
 
-render(){
-  const suggestions = ['foo', 'bar'];  
-  const handleSelect = selection => {console.log(selection)};
+  yesFn = () => {
+    this.setState({
+      isShow: false
+    })
+  }
+  noFn = () => {
+    this.setState({
+      isShow: false
+    })
+  }
+  openDialog = () => {
+    this.setState({
+      isShow: true
+    })
+  }
 
-  let input;
-  const handleSubmit = () => console.log(input.value);
-
-  return (
-    // without submit button
-    <AutoSuggest
-      suggestions = {suggestions}
-      onSelect = {handleSelect}
-      placeholder = "whatever..."
-    />
-
-    <form onSubmit={handleSubmit}>
-      <AutoSuggest
-        suggestions = {suggestions}
-        onSelect = {()=>{}}
-        placeholder = "whatever..."
-        inputRef = { node => input = node}
-    />
-    </form>
-  )
-}
+  render() {
+    const { isShow, title, text, YesTitle, NoTitle} = this.state
+    return (
+      <div className="App">
+        <button style={{
+          width: '120px', 
+          height: '60px', 
+          background: 'yellowgreen', 
+          color: '#fff', 
+          fontSize: '20px', 
+          borderRadius: '8px', 
+          marginTop: '100px',
+          outline: 'none',
+          border: '1px solid transparent',
+          cursor: 'pointer'
+        }} 
+        onClick={this.openDialog}>click</button>
+        <Dialog 
+        className='dialogStyle'
+        isShow={isShow}
+        title={title}
+        text={text}
+        YesTitle={YesTitle}
+        NoTitle={NoTitle}
+        yesBtn={this.yesFn}
+        noBtn={this.noFn}
+        />
+      </div>
+    );
+  }
 
 ```
 
-## Examples
+## Props
 
-[Here're some live demos](http://demo-react-tiny-autosuggest.surge.sh)
+| name | type | default | description |
+| ------ | ------ | ------ | ------ |
+| className | String | null | need add '!important' |
+| isShow | Boolean | false | control dialog display |
+| title | String | '这是一个标题' | Title Name |
+| text | String | '这是弹窗内容' |  Text Name |
+| noBtn | Function | null | control dialog noBtn function (if not have prop noBtn will no 'noBtn' button)|
+| yesBtn | Function | null | control dialog yesBtn function (if not have prop yesBtn will no 'yesBtn' button) |
+| YesTitle | String | Yes | yesBtn name |
+| NoTitle | String | No | noBtn name |
+

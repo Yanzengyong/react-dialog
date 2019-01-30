@@ -1,0 +1,48 @@
+.dialog_bg{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, .5);
+  z-index: 99999;
+}
+.dialog_container{
+  width: 380px;
+  padding: 30px;
+  text-align: left;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 75px rgba(0, 0, 0, 0.13);
+  color: #666;
+}
+.dialog_container h1{
+  margin-bottom: 18px;
+}
+.dialog_container p{
+  margin-bottom: 16px;
+}
+.dialog_container .dialog_btn_group{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.dialog_container .dialog_btn_group button{
+  outline: none;
+  background: #333;
+  border: none;
+  display: inline-block;
+  padding: 6px 18px;
+  color: #eee;
+  margin-right: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.dialog_container .dialog_btn_group button:hover{
+  background-color: #161616;
+  color: #fff;
+}

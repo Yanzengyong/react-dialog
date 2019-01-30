@@ -1,55 +1,58 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-import AutoSuggest from 'react-tiny-autosuggest';
+import Dialog from 'react-dialog';
 
 class App extends Component {
+  state = {
+    isShow: false,
+    title: '测试标题',
+    text: '这是一次新的月度分享------发布组件到npm',
+    YesTitle: '确定',
+    NoTitle: '取消'
+  }
+  yesFn = () => {
+    this.setState({
+      isShow: false
+    })
+  }
+  noFn = () => {
+    this.setState({
+      isShow: false
+    })
+  }
+  openDialog = () => {
+    this.setState({
+      isShow: true
+    })
+  }
   render() {
-    const suggestions = ['C', 'C++', 'Python', 'Java', 'Javascript', 'PHP'];
-    const handleSelect = selection => alert(`You selected ${selection}`);
-
-    let input;
-    const handleSubmit = () => alert(`You selected ${input.value}`);
-
+    const { isShow, title, text, YesTitle, NoTitle} = this.state
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-
-
-        <h1>Demo of react-tiny-autosuggest</h1>
-        <h2>Without submit button</h2>
-
-        <div style={{ width: '400px', margin: '20px auto' }}>
-          <AutoSuggest
-            suggestions={suggestions}
-            onSelect={handleSelect}
-            placeholder="Choose a programming language..."
-          />
-        </div>
-
-        <h2>With submit button </h2>
-
-        <form
-          onSubmit={handleSubmit}
-          style={{ display: 'flex', justifyContent: 'center' }}
-        >
-          <div style={{ float: 'left', width: '400px' }}>
-            <AutoSuggest
-              suggestions={suggestions}
-              onSelect={() => {}}
-              placeholder="Choose a programming language..."
-              inputRef={node => (input = node)}
-            />
-          </div>
-
-          <button type="submit" style={{ float: 'left', height: '34px' }}>
-            Submit
-          </button>
-        </form>
+        <button style={{
+          width: '120px', 
+          height: '60px', 
+          background: 'yellowgreen', 
+          color: '#fff', 
+          fontSize: '20px', 
+          borderRadius: '8px', 
+          marginTop: '100px',
+          outline: 'none',
+          border: '1px solid transparent',
+          cursor: 'pointer'
+        }} 
+        onClick={this.openDialog}>click</button>
+        <Dialog 
+        className='dialogStyle'
+        isShow={isShow}
+        title={title}
+        text={text}
+        YesTitle={YesTitle}
+        NoTitle={NoTitle}
+        yesBtn={this.yesFn}
+        noBtn={this.noFn}
+        />
       </div>
     );
   }
